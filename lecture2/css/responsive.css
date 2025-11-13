@@ -1,0 +1,127 @@
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+.gallery img {
+  width: 90%;
+  height: auto; 
+  margin: 0 auto; 
+  display: block; 
+}
+
+/* STUDENT CODE STARTS HERE */
+
+
+/* tablet View */
+
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .grid > div:nth-child(3n) {
+    grid-column: 1 / -1; 
+    justify-self: center; 
+    width: 50%; 
+  }
+
+  .grid > div:nth-child(even) {
+    background-color: rgb(237, 237, 167);
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .gallery img {
+    flex: 1 1 30%; 
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/*desktop view*/
+
+@media (min-width: 1200px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px; 
+    justify-items: center;
+  }
+
+  .grid > div {
+    grid-column: auto;
+    width: 100%; 
+  }
+
+  .grid > div:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .gallery img {
+    flex: 1 1 200px;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+
+/* print view*/
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .gallery {
+    display: none;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*preferes reduced motion*/
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery img:hover,
+  .grid > div:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #eee;
+    .grid > div {
+      background: #111;
+      border: solid 1px #EB5B00;
+    }
+  }
+}
+
